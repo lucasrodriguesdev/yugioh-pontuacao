@@ -2,17 +2,18 @@ package br.com.yugiohpontos
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.util.Log
-import android.view.View
-import android.widget.EditText
-import android.widget.TextView
-import androidx.core.text.set
+import androidx.recyclerview.widget.RecyclerView
+import br.com.yugiohpontos.adapter.PlayerDoisItemAdapter
+import br.com.yugiohpontos.adapter.PlayerUmItemAdapter
 import br.com.yugiohpontos.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
 
+    lateinit var binding: ActivityMainBinding
+    var myDataSet = mutableListOf<String>()
+    var myDataSet2 = mutableListOf<String>()
+    lateinit var rv: RecyclerView
+    lateinit var rv2: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -20,12 +21,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.calculo1.setOnClickListener { calcularDanoJogadorUm() }
         binding.calculo2.setOnClickListener { calcularDanoJogadorDois() }
+
+        rv = binding.rvHistoricoLp
+        rv2 = binding.rvHistoricoLp2
     }
 
     private fun calcularDanoJogadorUm() {
         val dmg = binding.damage1.text.toString()
+        var dmgInt = 0
         if(dmg.isNotEmpty()) {
-            val dmgInt = dmg.toInt()
+            dmgInt = dmg.toInt()
             val life = binding.lifePoints1.text.toString()
             val lifeInt = life.toInt()
             binding.lifePoints1.text = if(lifeInt - dmgInt > 0) {
@@ -37,12 +42,14 @@ class MainActivity : AppCompatActivity() {
             binding.vencedor.setTextColor(binding.damage2.currentHintTextColor)
         }
         binding.damage1.text.clear()
+        historico1((dmgInt*-1).toString())
     }
 
     private fun calcularDanoJogadorDois() {
         val dmg = binding.damage2.text.toString()
+        var dmgInt = 0
         if(dmg.isNotEmpty()) {
-            val dmgInt = dmg.toInt()
+            dmgInt = dmg.toInt()
             val life = binding.lifePoints2.text.toString()
             val lifeInt = life.toInt()
             binding.lifePoints2.text = if(lifeInt - dmgInt > 0) {
@@ -54,5 +61,18 @@ class MainActivity : AppCompatActivity() {
             binding.vencedor.setTextColor(binding.damage1.currentHintTextColor)
         }
         binding.damage2.text.clear()
+        historico2((dmgInt*-1).toString())
+    }
+
+    fun historico1(dmg:String){
+        rv.adapter = PlayerUmItemAdapter(myDataSet)
+        rv.setHasFixedSize(true)
+        myDataSet.add(dmg)
+    }
+
+    fun historico2(dmg:String){
+        rv2.adapter = PlayerDoisItemAdapter(myDataSet2)
+        rv2.setHasFixedSize(true)
+        myDataSet2.add(dmg)
     }
 }
