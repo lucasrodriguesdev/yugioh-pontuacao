@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Yugioh Pontos</string>
+    <string name="life_points_one">8000</string>
+    <string name="life_points_two">8000</string>
+    <string name="causar_dano">Causar dano</string>
+    <string name="valor_do_dano">Valor do dano</string>
+    <string name="vs">VS</string>
+</resources>
