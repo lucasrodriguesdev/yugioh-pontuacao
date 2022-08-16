@@ -38,8 +38,7 @@ class MainActivity : AppCompatActivity() {
             } else "0"
         }
         if (binding.lifePoints1.text.toString()=="0"){
-            binding.vencedor.text = "AZUL venceu!"
-            binding.vencedor.setTextColor(binding.damage2.currentHintTextColor)
+            binding.lifePoints1.text = "Win!"
         }
         binding.damage1.text.clear()
         historico1((dmgInt*-1).toString())
@@ -57,8 +56,7 @@ class MainActivity : AppCompatActivity() {
             } else "0"
         }
         if (binding.lifePoints2.text.toString()=="0"){
-            binding.vencedor.text = "VERMELHO venceu!"
-            binding.vencedor.setTextColor(binding.damage1.currentHintTextColor)
+            binding.lifePoints2.text = "Win!"
         }
         binding.damage2.text.clear()
         historico2((dmgInt*-1).toString())
