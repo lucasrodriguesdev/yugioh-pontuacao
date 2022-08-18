@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             } else "0"
         }
         if (binding.lifePoints1.text.toString()=="0"){
-            binding.lifePoints1.text = "Win!"
+            binding.lifePoints2.text = "Win!"
         }
         binding.damage1.text.clear()
         historico1((dmgInt*-1).toString())
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             } else "0"
         }
         if (binding.lifePoints2.text.toString()=="0"){
-            binding.lifePoints2.text = "Win!"
+            binding.lifePoints1.text = "Win!"
         }
         binding.damage2.text.clear()
         historico2((dmgInt*-1).toString())
