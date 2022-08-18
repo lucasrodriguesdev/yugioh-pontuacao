@@ -5,4 +5,5 @@
     <string name="causar_dano">Causar dano</string>
     <string name="valor_do_dano">Valor do dano</string>
     <string name="vs">VS</string>
+    <string name="calcularLP">Calcular LP</string>
 </resources>

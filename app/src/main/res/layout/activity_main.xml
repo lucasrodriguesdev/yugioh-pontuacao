@@ -33,19 +33,27 @@
 
     <Button
         android:id="@+id/calculo1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/causar_dano"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="-"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lifePoints1" />
+
+    <Button
+        android:layout_marginLeft="8dp"
+        android:id="@+id/calculo3"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:text="+"
+        app:layout_constraintStart_toEndOf="@id/calculo1"
         app:layout_constraintTop_toBottomOf="@id/lifePoints1" />
 
     <EditText
         android:id="@+id/damage1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/valor_do_dano"
+        android:hint="Pontos de vida"
         android:inputType="number"
-        android:textColorHint="#CA3F3F"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calculo1"
         tools:visibility="visible" />
@@ -68,7 +76,7 @@
         android:id="@+id/calculo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/causar_dano"
+        android:text="@string/calcularLP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lifePoints2" />
 
@@ -78,7 +86,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/valor_do_dano"
         android:inputType="number"
-        android:textColorHint="#517AC3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calculo2"
         tools:visibility="visible" />
