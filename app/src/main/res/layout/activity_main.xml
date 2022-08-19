@@ -5,122 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/versus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vs"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toStartOf="@id/lifePoints2"
-        app:layout_constraintStart_toEndOf="@id/lifePoints1"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="br.com.yugiohpontos.CalculatorLifePointsFragment"
+        tools:layout="@layout/fragment_calculator_life_points" />
 
-    <TextView
-        android:id="@+id/lifePoints1"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:background="#CA3F3F"
-        android:padding="8dp"
-        android:text="@string/life_points_one"
-        android:textColor="@color/white"
-        android:textSize="42sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Win" />
-
-    <Button
-        android:id="@+id/calculo1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="-"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lifePoints1" />
-
-    <Button
-        android:layout_marginLeft="8dp"
-        android:id="@+id/calculo3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:text="+"
-        app:layout_constraintStart_toEndOf="@id/calculo1"
-        app:layout_constraintTop_toBottomOf="@id/lifePoints1" />
-
-    <EditText
-        android:id="@+id/damage1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Pontos de vida"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calculo1"
-        tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/lifePoints2"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:background="#517AC3"
-        android:padding="8dp"
-        android:text="@string/life_points_two"
-        android:textColor="@color/white"
-        android:textSize="42sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="0" />
-
-    <Button
-        android:id="@+id/calculo2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/calcularLP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lifePoints2" />
-
-    <EditText
-        android:id="@+id/damage2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/valor_do_dano"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calculo2"
-        tools:visibility="visible" />
-
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/vencedor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Vencedor"
-        android:textSize="36dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/damage1"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHistoricoLp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vencedor"
-        app:layoutManager="LinearLayoutManager"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_hist_p1"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHistoricoLp2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vencedor"
-        app:layoutManager="LinearLayoutManager"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_hist_p1"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>

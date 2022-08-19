@@ -8,11 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.yugiohpontos.R
 
-class PlayerUmItemAdapter(
-    private val dataSet: List<String>
-) : RecyclerView.Adapter<PlayerUmItemAdapter.ItemViewHolder>() {
+class JogadorAdapter(
+    private val dataSet: List<String>,
+    private val LpAtual: List<String>
+) : RecyclerView.Adapter<JogadorAdapter.ItemViewHolder>() {
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textInfo: TextView = view.findViewById(R.id.points1)
+        val textLp: TextView = view.findViewById(R.id.hpAtual)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -29,6 +31,7 @@ class PlayerUmItemAdapter(
             holder.textInfo.setTextColor(Color.BLUE)
         }
         holder.textInfo.text = item
+        holder.textLp.text = LpAtual[position]
     }
 
     override fun getItemCount() = dataSet.size

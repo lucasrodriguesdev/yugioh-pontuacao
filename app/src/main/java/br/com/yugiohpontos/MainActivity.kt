@@ -2,30 +2,28 @@ package br.com.yugiohpontos
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
-import br.com.yugiohpontos.adapter.PlayerDoisItemAdapter
-import br.com.yugiohpontos.adapter.PlayerUmItemAdapter
 import br.com.yugiohpontos.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    var myDataSet = mutableListOf<String>()
-    var myDataSet2 = mutableListOf<String>()
-    lateinit var rv: RecyclerView
-    lateinit var rv2: RecyclerView
+//    var myDataSet = mutableListOf<String>()
+//    var myDataSet2 = mutableListOf<String>()
+//    lateinit var rv: RecyclerView
+//    lateinit var rv2: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.calculo1.setOnClickListener { calcularDanoJogadorUm() }
-        binding.calculo2.setOnClickListener { calcularDanoJogadorDois() }
-
-        rv = binding.rvHistoricoLp
-        rv2 = binding.rvHistoricoLp2
+//
+//        binding.calculo1.setOnClickListener { calcularDanoJogadorUm() }
+//        binding.calculo2.setOnClickListener { calcularDanoJogadorDois() }
+//
+//        rv = binding.rvHistoricoLp
+//        rv2 = binding.rvHistoricoLp2
     }
-
+/*
     private fun calcularDanoJogadorUm() {
         val dmg = binding.damage1.text.toString()
         var dmgInt = 0
@@ -73,4 +71,6 @@ class MainActivity : AppCompatActivity() {
         rv2.setHasFixedSize(true)
         myDataSet2.add(dmg)
     }
+    */
+
 }

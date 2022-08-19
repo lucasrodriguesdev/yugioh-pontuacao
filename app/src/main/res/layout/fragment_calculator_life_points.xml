@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".CalculatorLifePointsFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewLpOne"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E34D4D"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pontosDeVidaJogadorUm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:text="8000"
+                android:textColor="@color/white"
+                android:textSize="48dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#A51313"
+                android:gravity="center"
+                android:text="Jogador Um"
+                android:textColor="@color/white"
+                android:textSize="24dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/somarVidaJogadorUm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0852A1"
+        android:text="Somar LP"
+        app:layout_constraintEnd_toEndOf="@+id/cardViewLpOne"
+        app:layout_constraintStart_toStartOf="@id/cardViewLpOne"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewLpOne" />
+
+    <EditText
+        android:id="@+id/valorJogadorUm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Life Points"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/somarVidaJogadorUm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/somarVidaJogadorUm" />
+
+    <Button
+        android:id="@+id/subtrairVidaJogadorUm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#8A042E"
+        android:text="Diminuir LP"
+        app:layout_constraintEnd_toEndOf="@+id/valorJogadorUm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valorJogadorUm" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistoricoLp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="4dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/subtrairVidaJogadorUm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtrairVidaJogadorUm"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_hist_p1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
