@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.yugiohpontos.adapter.JogadorAdapter
@@ -14,6 +16,8 @@ class CalculatorLifePointsFragment : Fragment() {
 
     private var _binding: FragmentCalculatorLifePointsBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: JogadorViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     var historicoDano = mutableListOf<String>()
     var historicoHp = mutableListOf<String>()
@@ -27,12 +31,20 @@ class CalculatorLifePointsFragment : Fragment() {
         recyclerView = binding.rvHistoricoLp
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-
         binding.subtrairVidaJogadorUm.setOnClickListener { calcularDanoJogadorUm() }
         binding.somarVidaJogadorUm.setOnClickListener { somaLpJogadorUm() }
 
 
+        binding.pontosDeVidaJogadorUm.text
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.pontosDeVida.observe(viewLifecycleOwner){ lp ->
+            binding.pontosDeVidaJogadorUm.text = lp.toString()
+        }
     }
 
     private fun calcularDanoJogadorUm() {
