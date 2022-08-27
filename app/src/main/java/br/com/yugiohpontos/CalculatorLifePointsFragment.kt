@@ -19,24 +19,15 @@ class CalculatorLifePointsFragment : Fragment() {
 
     private val viewModel: JogadorViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
-    var historicoDano = mutableListOf<String>()
-    var historicoHp = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCalculatorLifePointsBinding.inflate(inflater,container,false)
-
+        _binding = FragmentCalculatorLifePointsBinding.inflate(inflater, container, false)
         recyclerView = binding.rvHistoricoLp
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         binding.subtrairVidaJogadorUm.setOnClickListener { calcularDanoJogadorUm() }
-        binding.somarVidaJogadorUm.setOnClickListener { somaLpJogadorUm() }
-
-
-        binding.pontosDeVidaJogadorUm.text
-
         return binding.root
     }
 
@@ -45,43 +36,34 @@ class CalculatorLifePointsFragment : Fragment() {
         viewModel.pontosDeVida.observe(viewLifecycleOwner){ lp ->
             binding.pontosDeVidaJogadorUm.text = lp.toString()
         }
+        viewModel.listaHistoDano.observe(viewLifecycleOwner){
+
+        }
     }
 
     private fun calcularDanoJogadorUm() {
-        val dmg = binding.valorJogadorUm.text.toString()
-        var dmgInt = 0
-        if(dmg.isNotEmpty()) {
-            dmgInt = dmg.toInt()
-            val life = binding.pontosDeVidaJogadorUm.text.toString()
-            val lifeInt = life.toInt()
-            binding.pontosDeVidaJogadorUm.text = if(lifeInt - dmgInt > 0) {
-                (lifeInt - dmgInt).toString()
-            } else "0"
-        }
-//        if (binding.lifePoints1.text.toString()=="0"){
-//            binding.lifePoints2.text = "Win!"
+        viewModel.subtraiPontosDeVida(binding.valorJogadorUm.text.toString())
+
+        //notificaHistorico((dmgInt*-1))
+    }
+
+//    private fun somaLpJogadorUm(){
+//        val valor = binding.valorJogadorUm.text.toString()
+//        var valorInt = 0
+//        if(valor.isNotEmpty()) {
+//            valorInt = valor.toInt()
+//            val life = binding.pontosDeVidaJogadorUm.text.toString()
+//            val lifeInt = life.toInt()
+//            binding.pontosDeVidaJogadorUm.text = (lifeInt + valorInt).toString()
+//            notificaHistorico(valorInt.toString())
 //        }
-        binding.valorJogadorUm.text.clear()
-        notificaHistorico((dmgInt*-1).toString())
-    }
+//        binding.valorJogadorUm.text.clear()
+//    }
 
-    private fun somaLpJogadorUm(){
-        val valor = binding.valorJogadorUm.text.toString()
-        var valorInt = 0
-        if(valor.isNotEmpty()) {
-            valorInt = valor.toInt()
-            val life = binding.pontosDeVidaJogadorUm.text.toString()
-            val lifeInt = life.toInt()
-            binding.pontosDeVidaJogadorUm.text = (lifeInt + valorInt).toString()
-            notificaHistorico(valorInt.toString())
-        }
-        binding.valorJogadorUm.text.clear()
-    }
-
-    private fun notificaHistorico(valor:String){
-        recyclerView.adapter = JogadorAdapter(historicoDano,historicoHp )
-        recyclerView.setHasFixedSize(true)
-        historicoDano.add(valor)
-        historicoHp.add(binding.pontosDeVidaJogadorUm.text.toString())
-    }
+//    private fun notificaHistorico(valor: Int){
+//        recyclerView.adapter = JogadorAdapter(viewModel.listaHistoDano.value, listOf())
+//        recyclerView.setHasFixedSize(true)
+//        viewModel.listaHistoDano.value?.add(valor)
+////        historicoHp.add(binding.pontosDeVidaJogadorUm.text.toString())
+//    }
 }

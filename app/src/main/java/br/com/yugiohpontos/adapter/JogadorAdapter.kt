@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.yugiohpontos.R
 
 class JogadorAdapter(
-    private val dataSet: List<String>,
-    private val LpAtual: List<String>
+    private val dataSet: List<Int>?,
+    private val LpAtual: List<Int>
 ) : RecyclerView.Adapter<JogadorAdapter.ItemViewHolder>() {
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textInfo: TextView = view.findViewById(R.id.points1)
@@ -24,16 +24,18 @@ class JogadorAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = dataSet[position]
-        if (item.contains("-")){
-            holder.textInfo.setTextColor(Color.RED)
-        } else {
-            holder.textInfo.setTextColor(Color.BLUE)
+        val item = dataSet?.get(position)
+        item?.let {
+            if(it < 0){ holder.textInfo.setTextColor(Color.RED) }
         }
-        holder.textInfo.text = item
-        holder.textLp.text = LpAtual[position]
+
+//        else {
+//            holder.textInfo.setTextColor(Color.BLUE)
+//        }
+        holder.textInfo.text = item.toString()
+        holder.textLp.text = LpAtual[position].toString()
     }
 
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount() = dataSet!!.size
 
 }
