@@ -1,12 +1,11 @@
-package br.com.yugiohpontos
+package br.com.yugiohpontos.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.yugiohpontos.adapter.JogadorAdapter
@@ -33,37 +32,24 @@ class CalculatorLifePointsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.pontosDeVida.observe(viewLifecycleOwner){ lp ->
+        viewModel.pontosDeVida.observe(viewLifecycleOwner) { lp ->
             binding.pontosDeVidaJogadorUm.text = lp.toString()
-        }
-        viewModel.listaHistoDano.observe(viewLifecycleOwner){
-
         }
     }
 
     private fun calcularDanoJogadorUm() {
         viewModel.subtraiPontosDeVida(binding.valorJogadorUm.text.toString())
-
-        //notificaHistorico((dmgInt*-1))
+        binding.valorJogadorUm.text.toString().let {
+            if(it.isNotEmpty())
+                notificaHistorico(it.toInt())
+        }
+        binding.valorJogadorUm.text.clear()
     }
 
-//    private fun somaLpJogadorUm(){
-//        val valor = binding.valorJogadorUm.text.toString()
-//        var valorInt = 0
-//        if(valor.isNotEmpty()) {
-//            valorInt = valor.toInt()
-//            val life = binding.pontosDeVidaJogadorUm.text.toString()
-//            val lifeInt = life.toInt()
-//            binding.pontosDeVidaJogadorUm.text = (lifeInt + valorInt).toString()
-//            notificaHistorico(valorInt.toString())
-//        }
-//        binding.valorJogadorUm.text.clear()
-//    }
+    private fun notificaHistorico(valor: Int) {
+        recyclerView.adapter = JogadorAdapter(viewModel.listaHistoDano.value)
+        recyclerView.setHasFixedSize(true)
+        viewModel.atualizaListaDano(valor)
+    }
 
-//    private fun notificaHistorico(valor: Int){
-//        recyclerView.adapter = JogadorAdapter(viewModel.listaHistoDano.value, listOf())
-//        recyclerView.setHasFixedSize(true)
-//        viewModel.listaHistoDano.value?.add(valor)
-////        historicoHp.add(binding.pontosDeVidaJogadorUm.text.toString())
-//    }
 }

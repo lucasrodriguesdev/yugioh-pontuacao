@@ -11,7 +11,7 @@
         android:id="@+id/fragMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="br.com.yugiohpontos.CalculatorLifePointsFragment"
+        android:name="br.com.yugiohpontos.ui.CalculatorLifePointsFragment"
         tools:layout="@layout/fragment_calculator_life_points" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

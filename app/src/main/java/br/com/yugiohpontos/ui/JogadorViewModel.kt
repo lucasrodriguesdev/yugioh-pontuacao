@@ -1,4 +1,4 @@
-package br.com.yugiohpontos
+package br.com.yugiohpontos.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,18 +10,23 @@ class JogadorViewModel : ViewModel() {
     val pontosDeVida: LiveData<Int>
         get() = _pontosDeVida
 
-    private val _listaHistoDano: MutableLiveData<MutableList<Int>> = MutableLiveData(mutableListOf())
+    private val _listaHistoDano: MutableLiveData<MutableList<Int>> =
+        MutableLiveData(mutableListOf())
     val listaHistoDano: LiveData<MutableList<Int>>
         get() = _listaHistoDano
 
-    fun subtraiPontosDeVida(dano: String){
-        if(dano.isNotEmpty()) {
+    fun subtraiPontosDeVida(dano: String) {
+        if (dano.isNotEmpty()) {
             val danoEmInt = dano.toInt()
             _pontosDeVida.value = _pontosDeVida.value?.minus(danoEmInt)
-            } else "0"
+        } else "0"
     }
 
-    fun somaPontosDeVida(){
+    fun atualizaListaDano(danoRecebido: Int) {
+        _listaHistoDano.value?.add(danoRecebido)
+    }
+
+    fun somaPontosDeVida() {
         TODO()
     }
 }
