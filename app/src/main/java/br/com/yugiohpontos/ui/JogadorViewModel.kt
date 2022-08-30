@@ -27,6 +27,7 @@ class JogadorViewModel : ViewModel() {
     }
 
     fun somaPontosDeVida() {
-        TODO()
+        TODO("implementar metodo para somar pontos de vida")
+
     }
 }
